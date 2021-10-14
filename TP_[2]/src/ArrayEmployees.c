@@ -7,6 +7,7 @@
 
 #include "ArrayEmployees.h"
 
+
 int initEmployees(Employee list[], int len)
 {
 	int retorno=-1;
@@ -199,6 +200,7 @@ int printEmployees(Employee list[], int length)
 				}
 			}
 			printf("\n");
+			retorno=0;
 	}
 	return retorno;
 }
@@ -207,6 +209,7 @@ void printOneEmployee(Employee empleado)
 {
 	printf("%-5d %-20s %-20s %-20.2f %-20d\n", empleado.id, empleado.name, empleado.lastName, empleado.salary, empleado.sector);
 }
+
 void printEncabezadoEmployee()
 {
 	printf("%-5s %-20s %-20s %-20s %-20s\n", "ID", "NAME", "LAST NAME", "SALARY", "SECTOR");
@@ -232,6 +235,7 @@ int contarEmpleadosActivos(Employee list[],int len)
 	}
 	return retorno;
 }
+
 float Employee_TotalSumaSalarios(Employee list[],int len)
 {
 	float retorno =-1;
@@ -272,6 +276,7 @@ float Employee_PromedioSalarios(Employee list[],int len)
 
 	return retorno;
 }
+
 int Employee_ContadorEmpleadoSalarioSuperiorA(Employee list[],int len, float salarioGuia)
 {
 	int retorno =-1;

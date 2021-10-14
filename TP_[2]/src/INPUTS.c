@@ -1,5 +1,6 @@
 #include "Inputs.h"
 
+
 int pedirEntero(int* entero, char* mensaje, char* mensajeError, int min, int max)
 {
 	int retorno = -1;
