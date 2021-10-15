@@ -138,15 +138,15 @@ int sortEmployees(Employee* list, int len, int order)
 						{
 							if(strcmp(list[i].lastName, list[j].lastName) == 1)
 							{
-								auxEmployee = list[i]; //copiamos la estructura ENTERA
-								list[i] = list[j]; //copiamos la estructura ENTERA
-								list[j] = auxEmployee; //copiamos la estructura ENTERA
+								auxEmployee = list[i];
+								list[i] = list[j];
+								list[j] = auxEmployee;
 							}
 							else if((strcmp(list[i].lastName, list[j].lastName) == 0) && list[i].sector>list[j].sector)
 							{
-								auxEmployee = list[i]; //copiamos la estructura ENTERA
-								list[i] = list[j]; //copiamos la estructura ENTERA
-								list[j] = auxEmployee; //copiamos la estructura ENTERA
+								auxEmployee = list[i];
+								list[i] = list[j];
+								list[j] = auxEmployee;
 							}
 						}
 					}
@@ -162,15 +162,15 @@ int sortEmployees(Employee* list, int len, int order)
 						{
 							if(strcmp(list[i].lastName, list[j].lastName) > 0)
 							{
-								auxEmployee = list[i]; //copiamos la estructura ENTERA
-								list[i] = list[j]; //copiamos la estructura ENTERA
-								list[j] = auxEmployee; //copiamos la estructura ENTERA
+								auxEmployee = list[i];
+								list[i] = list[j];
+								list[j] = auxEmployee;
 							}
 							else if((strcmp(list[i].lastName, list[j].lastName) == 0) && list[i].sector>list[j].sector)
 							{
-								auxEmployee = list[i]; //copiamos la estructura ENTERA
-								list[i] = list[j]; //copiamos la estructura ENTERA
-								list[j] = auxEmployee; //copiamos la estructura ENTERA
+								auxEmployee = list[i];
+								list[i] = list[j];
+								list[j] = auxEmployee;
 							}
 						}
 					}
