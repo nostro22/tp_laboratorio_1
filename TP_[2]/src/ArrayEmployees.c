@@ -129,7 +129,7 @@ int sortEmployees(Employee* list, int len, int order)
 	Employee auxEmployee;
 
 	switch (order) {
-		case 1://Decendente
+		case 1://Acendente
 			if(list !=NULL)
 			{
 				for(i=0; i<len-1; i++)
@@ -153,25 +153,26 @@ int sortEmployees(Employee* list, int len, int order)
 				retorno=0;
 			}
 			break;
-		case 0://Acendente
+		case 0://Descendente
 			if(list !=NULL)
 			{
 				for(i=0; i<len-1; i++)
 					{
 						for(j=i+1; j<len; j++)
 						{
-							if(strcmp(list[i].lastName, list[j].lastName) > 0)
+							if(strcmp(list[i].lastName, list[j].lastName) < 0)
 							{
-								auxEmployee = list[i];
-								list[i] = list[j];
-								list[j] = auxEmployee;
+								auxEmployee = list[j];
+								list[j] = list[i];
+								list[i] = auxEmployee;
 							}
-							else if((strcmp(list[i].lastName, list[j].lastName) == 0) && list[i].sector>list[j].sector)
+							else if((strcmp(list[i].lastName, list[j].lastName) == 0) && list[i].sector<list[j].sector)
 							{
-								auxEmployee = list[i];
-								list[i] = list[j];
-								list[j] = auxEmployee;
+								auxEmployee = list[j];
+								list[j] = list[i];
+								list[i] = auxEmployee;
 							}
+
 						}
 					}
 				retorno=0;
