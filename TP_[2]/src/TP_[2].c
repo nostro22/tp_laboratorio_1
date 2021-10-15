@@ -38,24 +38,7 @@ float promedioSalario;
 setbuf(stdout,NULL);
 initEmployees(listaEmpleados, QTY_EMPLEADOS);
 
-///HardCodeo Testeo
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 1, "noimporta", "a", 1200, 1);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 2, "noimporta", "a", 1200, 1);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 3, "noimporta", "a", 1200, 2);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 4, "noimporta", "a", 2000, 10);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 5, "noimporta", "a", 1200, 9);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 6, "noimporta", "a", 1200, 7);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 7, "noimporta", "b", 1200, 5);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 8, "noimporta", "b", 1200, 4);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 9, "noimporta", "b", 1200, 3);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 10, "noimporta", "b", 1300, 2);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 11, "noimporta", "b", 1200, 10);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 12, "noimporta", "b", 1200, 9);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 13, "noimporta", "c", 1200, 1);
-addEmployee(listaEmpleados, QTY_EMPLEADOS, 14, "noimporta", "c", 1400, 2);
 
-idContador+=14;
-cantidadEmpleadosActivos+=14;
 do
 {
 
