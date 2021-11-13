@@ -8,7 +8,7 @@
 /****************************************************
     Menu:
      1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
+     2. Cargar los datos de los empleados desde el archivo dataBn.bin (modo binario).
      3. Alta de empleado
      4. Modificar datos de empleado
      5. Baja de empleado

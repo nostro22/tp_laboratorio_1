@@ -9,6 +9,8 @@ Employee* employee_new()
 	employeeRetorno = (Employee*) malloc (sizeof(Employee));
 	return employeeRetorno;
 }
+
+
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr)
 {
 	Employee* employeeRetorno = NULL;
@@ -21,13 +23,18 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 	}
 	return employeeRetorno;
 }
-void employee_delete(Employee* this)
+
+
+int employee_delete(Employee* this)
 {
+	int retorno=0;
 	if(this != NULL)
 	{
 		free(this);
 		this = NULL;
+		retorno=1;
 	}
+	return retorno;
 }
 
 int employee_setId(Employee* this,int id)
@@ -121,102 +128,124 @@ int employee_getSueldo(Employee* this,int* sueldo)
 	return retorno;
 }
 
-void employee_printData(Employee* this)
+int employee_printData(Employee* this)
 {
-    int id;
-    char nombre[51];
-    int horasTrabajadas;
-    int sueldo;
-    employee_getId(this, &id);
-    employee_getNombre(this, nombre);
-    employee_getHorasTrabajadas(this, &horasTrabajadas);
-    employee_getSueldo(this, &sueldo);
-    printf("%-10d  %-15s  %-15d %-15d\n", id, nombre, horasTrabajadas, sueldo);
+	int retorno=0;
+	int id;
+	char nombre[51];
+	int horasTrabajadas;
+	int sueldo;
+	if(this !=NULL)
+	{
+		employee_getId(this, &id);
+		employee_getNombre(this, nombre);
+		employee_getHorasTrabajadas(this, &horasTrabajadas);
+		employee_getSueldo(this, &sueldo);
+		printf("%-10d  %-15s  %-15d %-15d\n", id, nombre, horasTrabajadas, sueldo);
+	}
+	return retorno;
 }
 
 int employee_ordenarPorNombre(void* punteroUno, void* punteroDos)
 {
 	int retorno=-2;
-	char auxNombreUno[128];
-	char auxNombreDos[128];
-	Employee* auxEmpleado = (Employee*)punteroUno;
-	Employee* auxEmpleadoDos = (Employee*)punteroDos;
-	employee_getNombre(auxEmpleado,auxNombreUno);
-	employee_getNombre(auxEmpleadoDos,auxNombreDos);
+	if(punteroUno!=NULL&&punteroDos!=NULL)
+	{
+		retorno=0;
+		char auxNombreUno[128];
+		char auxNombreDos[128];
+		Employee* auxEmpleado = (Employee*)punteroUno;
+		Employee* auxEmpleadoDos = (Employee*)punteroDos;
+		employee_getNombre(auxEmpleado,auxNombreUno);
+		employee_getNombre(auxEmpleadoDos,auxNombreDos);
 
-	retorno=strcmp(auxNombreUno,auxNombreDos);
+		retorno=strcmp(auxNombreUno,auxNombreDos);
 
-	auxEmpleado =NULL;
-	auxEmpleadoDos=NULL;
+		auxEmpleado =NULL;
+		auxEmpleadoDos=NULL;
+	}
+
 	return retorno;
 }
 
 int employee_ordenarPorHoras(void* punteroUno, void* punteroDos)
 {
-	int retorno=0;
-	int horasUno;
-	int horasDos;
-	Employee* auxEmpleado = (Employee*)punteroUno;
-	Employee* auxEmpleadoDos = (Employee*)punteroDos;
-	employee_getHorasTrabajadas(auxEmpleado,&horasUno);
-	employee_getHorasTrabajadas(auxEmpleadoDos,&horasDos);
+	int retorno=-2;
+	if(punteroUno!=NULL&&punteroDos!=NULL)
+	{
+		retorno=0;
+		int horasUno;
+		int horasDos;
+		Employee* auxEmpleado = (Employee*)punteroUno;
+		Employee* auxEmpleadoDos = (Employee*)punteroDos;
+		employee_getHorasTrabajadas(auxEmpleado,&horasUno);
+		employee_getHorasTrabajadas(auxEmpleadoDos,&horasDos);
 
-	if(horasUno>horasDos)
-	{
-		retorno=1;
+		if(horasUno>horasDos)
+		{
+			retorno=1;
+		}
+		else if(horasUno<horasDos)
+		{
+			retorno=-1;
+		}
+		auxEmpleado =NULL;
+		auxEmpleadoDos=NULL;
 	}
-	else if(horasUno<horasDos)
-	{
-		retorno=-1;
-	}
-	auxEmpleado =NULL;
-	auxEmpleadoDos=NULL;
 	return retorno;
 }
 
 int employee_ordenarPorId(void* punteroUno, void* punteroDos)
 {
-	int retorno=0;
-	int idUno;
-	int idDos;
-	Employee* auxEmpleado = (Employee*)punteroUno;
-	Employee* auxEmpleadoDos = (Employee*)punteroDos;
-	employee_getId(auxEmpleado,&idUno);
-	employee_getId(auxEmpleadoDos,&idDos);
+	int retorno=-2;
+	if(punteroUno!=NULL&&punteroDos!=NULL)
+	{
+		retorno=0;
+		int idUno;
+		int idDos;
+		Employee* auxEmpleado = (Employee*)punteroUno;
+		Employee* auxEmpleadoDos = (Employee*)punteroDos;
+		employee_getId(auxEmpleado,&idUno);
+		employee_getId(auxEmpleadoDos,&idDos);
 
-	if(idUno>idDos)
-	{
-		retorno=1;
+		if(idUno>idDos)
+		{
+			retorno=1;
+		}
+		else if(idUno<idDos)
+		{
+			retorno=-1;
+		}
+		auxEmpleado =NULL;
+		auxEmpleadoDos=NULL;
 	}
-	else if(idUno<idDos)
-	{
-		retorno=-1;
-	}
-	auxEmpleado =NULL;
-	auxEmpleadoDos=NULL;
 	return retorno;
 }
 
 int employee_ordenarSueldo(void* punteroUno, void* punteroDos)
 {
-	int retorno=0;
-	int sueldoUno;
-	int sueldoDos;
-	Employee* auxEmpleado = (Employee*)punteroUno;
-	Employee* auxEmpleadoDos = (Employee*)punteroDos;
-	employee_getSueldo(auxEmpleado,&sueldoUno);
-	employee_getSueldo(auxEmpleadoDos,&sueldoDos);
+	int retorno=-2;
+	if(punteroUno!=NULL&&punteroDos!=NULL)
+	{
+		retorno=0;
+		int sueldoUno;
+		int sueldoDos;
+		Employee* auxEmpleado = (Employee*)punteroUno;
+		Employee* auxEmpleadoDos = (Employee*)punteroDos;
+		employee_getSueldo(auxEmpleado,&sueldoUno);
+		employee_getSueldo(auxEmpleadoDos,&sueldoDos);
 
-	if(sueldoUno>sueldoDos)
-	{
-		retorno=1;
+		if(sueldoUno>sueldoDos)
+		{
+			retorno=1;
+		}
+		else if(sueldoUno<sueldoDos)
+		{
+			retorno=-1;
+		}
+		auxEmpleado =NULL;
+		auxEmpleadoDos=NULL;
 	}
-	else if(sueldoUno<sueldoDos)
-	{
-		retorno=-1;
-	}
-	auxEmpleado =NULL;
-	auxEmpleadoDos=NULL;
 	return retorno;
 }
 

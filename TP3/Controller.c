@@ -318,46 +318,58 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 	int i;
 	Employee* pEmploy;
 	int idEmpleadoActual;
-
-	noError=pedirEntero(&idNumber, "Ingrese el Id del empleado que desea eliminar:\n", "No es un Id posible ingrese solo enteros positivos", 1, 9999, 6);
-	if(noError==-1)
+	if(pArrayListEmployee!=NULL)
 	{
-		printf("Volviendo al menu intentos agotados\n");
+
+
+		noError=pedirEntero(&idNumber, "Ingrese el Id del empleado que desea eliminar:\n", "No es un Id posible ingrese solo enteros positivos", 1, 9999, 6);
+		if(noError==-1)
+		{
+			printf("Volviendo al menu intentos agotados\n");
+			retorno=3;
+		}
+		else
+		{
+
+			listaLength = ll_len(pArrayListEmployee);
+			for (i = 0; i < listaLength; i++)
+			{
+				pEmploy=(Employee*) ll_get(pArrayListEmployee, i);
+				employee_getId(pEmploy, &idEmpleadoActual);
+				if(idNumber==idEmpleadoActual)
+				{
+					indiceEmpleado=i;
+					break;
+				}
+			}
+			if(indiceEmpleado!=-1)
+			{
+
+				printf(" %10s %15s %15s %15s \n","ID","NOMBRE","HORAS","Sueldo");
+				pEmploy=(Employee*) ll_get(pArrayListEmployee, indiceEmpleado);
+				employee_printData(pEmploy);
+				pedirCaracter(&confirmacion, "Ingrese S si este es el empleado que desea eliminar\n");
+				{
+					if(confirmacion=='s'||confirmacion=='S')
+					{
+						ll_remove(pArrayListEmployee, indiceEmpleado);
+						retorno=1;
+					}
+					else
+					{
+						printf("Se cancelo la Baja. Volviendo al menu\n");
+						retorno=2;
+					}
+				}
+			}
+		}
 	}
 	else
 	{
-
-		listaLength = ll_len(pArrayListEmployee);
-		for (i = 0; i < listaLength; i++)
-		{
-			pEmploy=(Employee*) ll_get(pArrayListEmployee, i);
-			employee_getId(pEmploy, &idEmpleadoActual);
-			if(idNumber==idEmpleadoActual)
-			{
-				indiceEmpleado=i;
-				break;
-			}
-		}
-		if(indiceEmpleado!=-1)
-		{
-
-			printf(" %10s %15s %15s %15s \n","ID","NOMBRE","HORAS","Sueldo");
-			pEmploy=(Employee*) ll_get(pArrayListEmployee, indiceEmpleado);
-			employee_printData(pEmploy);
-			pedirCaracter(&confirmacion, "Ingrese S si este es el empleado que desea eliminar\n");
-			{
-				if(confirmacion=='s'||confirmacion=='S')
-				{
-					ll_remove(pArrayListEmployee, indiceEmpleado);
-				}
-				else
-				{
-					printf("Se cancelo la Baja. Volviendo al menu\n");
-				}
-			}
-		}
+		printf("ERROR referencia a lista de empleados NULL\n");
 	}
 	return retorno;
+
 }
 
 
@@ -365,14 +377,20 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
 	int i=0;
-	int lenList = ll_len(pArrayListEmployee);
-	printf(" %-10s %-15s %-15s %-15s \n","ID","NOMBRE","HORAS","Sueldo");
-	for (i = 0; i < lenList; ++i)
+	int retorno=0;
+	if(pArrayListEmployee!=NULL)
 	{
-		Employee* pEmpleado =(Employee*) ll_get(pArrayListEmployee, i);
-		employee_printData(pEmpleado);
+		int lenList = ll_len(pArrayListEmployee);
+		printf(" %-10s %-15s %-15s %-15s \n","ID","NOMBRE","HORAS","Sueldo");
+		for (i = 0; i < lenList; ++i)
+		{
+			Employee* pEmpleado =(Employee*) ll_get(pArrayListEmployee, i);
+			employee_printData(pEmpleado);
+		}
+		retorno=1;
 	}
-	return 1;
+
+	return retorno;
 }
 
 
@@ -458,9 +476,14 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 		case 9:
 
 			printf("Volviendo al menu\n");
+			retorno=2;
 			break;
 		}
 
+		if(opcioningreso<0&&opcioningreso>9)
+		{
+			retorno=1;
+		}
 
 
 	}
@@ -487,6 +510,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 	FILE* pFile;
 	if(path!=NULL)
 	{
+		retorno=2;
 		pFile = fopen(path, "w");
 
 		if(pFile!=NULL)
@@ -496,7 +520,6 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 			for (int var = 0; var < tamArray; ++var)
 			{
 				pEmpleado=(Employee*)ll_get(pArrayListEmployee, var);
-
 				employee_getId(pEmpleado, &id);
 				employee_getNombre(pEmpleado, nombre);
 				employee_getSueldo(pEmpleado, &sueldo);
@@ -524,6 +547,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 	FILE* pFile;
 	if(path!=NULL)
 	{
+		retorno=2;
 		pFile = fopen(path, "wb");
 
 		if(pFile!=NULL)
@@ -538,7 +562,6 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 		}
 		fclose(pFile);
 	}
-
 	return retorno;
 }
 
