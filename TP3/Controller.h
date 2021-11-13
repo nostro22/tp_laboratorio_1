@@ -36,7 +36,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee);
 /** \brief Baja de empleado solicita al usurio un id del empleado, lo muestra y pide confirmacion antes de eliminarlo de la lista e liberar la memoria dinamica
  *
  * \param pArrayListEmployee LinkedList* Lista de punteros de empleados
- * \return int 0 si pArrayListEmployee NULL, 1 eliminacion exitosa, 2 cancelacion de eliminacion por elecion de usurio, 3 cancelacion por agotamiento de intentos
+ * \return int 0 si pArrayListEmployee NULL, 1 eliminacion exitosa, 2 cancelacion de eliminacion por elecion de usurio, 3 cancelacion por agotamiento de intentos o empleado no encontrado
  *
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee);

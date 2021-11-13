@@ -300,6 +300,11 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 					}
 				}
 			}
+			else
+			{
+				printf("Empleado no encontrado. Volviendo al menu\n");
+				retorno=3;
+			}
 		}
 	}
 	return retorno;
