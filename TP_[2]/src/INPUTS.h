@@ -76,10 +76,46 @@ int pedirCaracter(char* caracter, char* mensaje);
  */
 int contieneSoloLetras(char* cadena);
 
+/**
+ * @fn int askForAccompaniedNumber(char*)
+ * @brief  Verifia que el numero no este acompañado por simbolos
+ *
+ * @param string
+ * @return -1 error string nulo, 0 es un numero
+ */
 int askForAccompaniedNumber(char* string);
+
+/**
+ * @fn int pedirCaracter(char*, char*)
+ * @brief Solicita al usuario que ingrese un char
+ * @param caracter char a captar
+ * @param mensaje mensaje a mostrar al usuario
+ * @return -1 error 0 exito
+ */
 int pedirCaracter(char* caracter, char* mensaje);
+
+/**
+ * @fn int transformUppercase(char*)
+ * @brief convierte la cadena recibida a mayuscula
+ * @param string cadena a convertir
+ * @return -1 error 0 exito en convercion
+ */
 int transformUppercase(char* string);
+
+/**
+ * @fn int validateString(char*)
+ * @brief agranda a mayusculas y verifica que todos sean letras
+ * @param string
+ * @return -1 error 0 exito
+ */
 int validateString(char* string);
+
+/**
+ * @fn int validateSpaces(char*)
+ * @brief verifica que no haya espacio en medio
+ * @param string cadena a validar
+ * @return -1 error 0 exito
+ */
 int validateSpaces(char* string);
 
 

@@ -61,7 +61,6 @@ int main(void) {
 				printf("Ingresando nuevo empleado en la nomina n° %d\n",auxIndex);
 				printf("Maximo de longitud permitido %d caracteres\n",NOMBREAPELLIDOLENGTH);
 				error=pedirCadenaSoloLetras(auxEmploy.name, "Ingrese el nombre del empleado\n", "Reingrese nombre invalido\n", NOMBREAPELLIDOLENGTH,2);
-				printf("EL nombre dio    %d\n",error);
 				if(!error)
 				{
 					printf("Maximo de longitd permitido %d \n",NOMBREAPELLIDOLENGTH);

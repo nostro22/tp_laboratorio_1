@@ -5,6 +5,9 @@
  *      Author: Usuario
  */
 #include "INPUTS.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #ifndef ARRAYEMPLOYEES_H_
 #define ARRAYEMPLOYEES_H_
